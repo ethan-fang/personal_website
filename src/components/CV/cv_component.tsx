@@ -1,6 +1,6 @@
 import React from "react"
 import { CVDataType, Team, Employment } from "./cv_datatype";
-
+import theme from '../../theme';
 
 const ContactComponent = ({ email }: { email: string }) => {
   return (
@@ -29,7 +29,7 @@ const EmployementComponent = ({
     <div>
       <div >{employement.company}</div>
       <div css={{
-          color: `red`,
+          color: theme.colors.dark,
           // Pseudo styles are supported!
           ':hover': {
             textDecoration: `underline`,
