@@ -1,6 +1,5 @@
 import React from "react"
 import { CVDataType, Team, Employment } from "./cv_datatype";
-import cvComponentStyle from "./cv_component.module.css"
 
 
 const ContactComponent = ({ email }: { email: string }) => {
@@ -28,8 +27,18 @@ const EmployementComponent = ({
 }): React.ReactElement => {
   return (
     <div>
-      <div className={cvComponentStyle.container}>{employement.company}</div>
-      <div>{employement.location}</div>
+      <div >{employement.company}</div>
+      <div css={{
+          color: `red`,
+          // Pseudo styles are supported!
+          ':hover': {
+            textDecoration: `underline`,
+          },
+          // As are media queries!
+          '@media (min-width: 400px)': {
+            color: `blue`,
+          },
+        }}>{employement.location}</div>
       <div>{employement.position}</div>
       {employement.teams.map((team, index) => (
         <div key={index}>
