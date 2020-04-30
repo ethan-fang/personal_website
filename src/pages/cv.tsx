@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import { string } from "prop-types"
 
 import CV from '../data/cv_data'
-import CVComponent from "../components/CV/cv_component"
+import CVComponent from "../components/cv/cv_component"
 
 
 const AboutPage = () => {

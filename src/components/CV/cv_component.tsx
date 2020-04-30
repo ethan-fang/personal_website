@@ -1,6 +1,7 @@
 import React from "react"
-import { CVDataType, Team, Employment } from "./cv_datatype";
-import theme from '../../theme';
+import { CVDataType, Team, Employment } from "./cv_datatype"
+import theme from "../../theme"
+import moment from 'moment'
 
 const ContactComponent = ({ email }: { email: string }) => {
   return (
@@ -11,12 +12,15 @@ const ContactComponent = ({ email }: { email: string }) => {
 }
 
 const TeamComponent = ({ team }: { team: Team }): React.ReactElement => {
+  const startText = moment(team.start).format('MMM YYYY');
+  const endText = team.end ? moment(team.end).format('MMM YYYY') : 'Now';
   return (
-    <>
-      <div>{team.start.toString()}</div>
-      <div>{team.end?.toString()}</div>
+    <div css={{
+      marginBottom: '16px',
+    }}>
+      <div>{startText} - {endText}</div>
       <div>{team.description}</div>
-    </>
+    </div>
   )
 }
 
@@ -27,18 +31,15 @@ const EmployementComponent = ({
 }): React.ReactElement => {
   return (
     <div>
-      <div >{employement.company}</div>
-      <div css={{
+      <div
+        css={{
+          display: "flex",
+          justifyContent: "flex-start",
           color: theme.colors.dark,
-          // Pseudo styles are supported!
-          ':hover': {
-            textDecoration: `underline`,
-          },
-          // As are media queries!
-          '@media (min-width: 400px)': {
-            color: `blue`,
-          },
-        }}>{employement.location}</div>
+        }}
+      >
+        <div>{employement.company}</div>-<div>{employement.location}</div>
+      </div>
       <div>{employement.position}</div>
       {employement.teams.map((team, index) => (
         <div key={index}>
@@ -50,16 +51,18 @@ const EmployementComponent = ({
 }
 
 const CVComponent = ({
-  cvData
-}: {cvData: CVDataType}): React.ReactElement => {
+  cvData,
+}: {
+  cvData: CVDataType
+}): React.ReactElement => {
   return (
     <>
       {cvData.employements.map((e, i) => (
         <div key={i}>
           <EmployementComponent employement={e}></EmployementComponent>
-          EmployementComponent>
         </div>
-      ))}</>
+      ))}
+    </>
   )
 }
 
