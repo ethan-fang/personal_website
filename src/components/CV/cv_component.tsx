@@ -17,6 +17,8 @@ const TeamComponent = ({ team }: { team: Team }): React.ReactElement => {
   return (
     <div css={{
       marginBottom: '16px',
+      fontSize: '16px',
+      color: theme.colors.darker,
     }}>
       <div>{startText} - {endText}</div>
       <div>{team.description}</div>
@@ -35,7 +37,7 @@ const EmployementComponent = ({
         css={{
           display: "flex",
           justifyContent: "flex-start",
-          color: theme.colors.dark,
+          color: theme.colors.lighter,
         }}
       >
         <div>{employement.company}</div>-<div>{employement.location}</div>
